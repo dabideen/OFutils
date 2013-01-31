@@ -1,6 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+""" 
+Script to set up CPqD openflow 1.3 softswitch. Also server as a wrapper some dpctl commands.
+"""
 
-""" Script to set up CPqD openflow 1.3 softswitch. Also server as a wrapper some dpctl commands"""
+__all__ = ['run_ifconfig','parse','__main__']
+
+__author__ =  ['Stephen Dabideen <dabideen@bbn.com>']
+
+# Copyright (C) 2013 by 
+# Raytheon BBN Technologies.
+# All rights reserved. 
+# BSD license. 
+
 
 import subprocess
 import re
@@ -16,12 +28,18 @@ patterns = [
             ]
 
 def run_ifconfig():
+    """ Function to run ifconfig and store the results. """
+    
     process = subprocess.Popen(["ifconfig"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (stdout, stderr) = process.communicate()
     process.wait()
     return stdout
 
-def parse(ifconfig=None,ctrl_mask='10.10.9'):
+def parse(ifconfig=None,ctrl_mask='10.10.40'):
+    """ Function to parse the output of ifconfig and determines which interface are to be
+    controlled by OpenFlow. Assumes the OF interfaces are on the 10.10.xxx.xxx ip range and
+    the controller is on a different, specified subnet. """
+    
     interfaces = {}
     OF_interfaces = {}
     if not ifconfig:
