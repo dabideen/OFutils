@@ -9,7 +9,7 @@ __all__ = ['make_match_dict','make_instr_dict','__main__']
 __author__ =  ['Stephen Dabideen <dabideen@bbn.com>']
 
 # Copyright (C) 2013 by 
-# Raytheon BBN Technologies and Rensselaer Polytechnic Institute
+# Raytheon BBN Technologies.
 # All rights reserved. 
 # BSD license. 
 
