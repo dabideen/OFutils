@@ -91,7 +91,7 @@ if __name__ == "__main__":
     OF_interfaces,dpid,dpip = parse(ifc,ctrl_ip_mask)
     OF_interface_list = OF_interfaces.keys()
     OF_interface_list.sort()
-    cmd = 'screen -d -m sudo /local/ofsoftswitch13/udatapath/ofdatapath --verbose=dp_acts --verbose=pipeline ptcp:6633 -d ' + dpid + ' -i ' + ','.join(OF_interface_list)  # + ' >/users/dabideen/switch.log'
+    cmd = 'screen -d -m sudo /usr/bin/ofdatapath --verbose=dp_acts --verbose=pipeline ptcp:6633 -d ' + dpid + ' -i ' + ','.join(OF_interface_list)  # + ' >/users/dabideen/switch.log'
 #    print cmd
     os.system(cmd)
     hname = socket.gethostname()
@@ -104,6 +104,6 @@ if __name__ == "__main__":
     cmd = 'mv ' + hname + 'of_config.txt' + ' ~/'
     os.system(cmd)  
 
-    cmd2 = 'screen -d -m /local/ofsoftswitch13/secchan/ofprotocol tcp:' + dpip + ':6633 tcp:' + ctrl_ip + ':6633'
+    cmd2 = 'screen -d -m /usr/bin/ofprotocol tcp:' + dpip + ':6633 tcp:' + ctrl_ip + ':6633'
 #    print cmd2
     os.system(cmd2)
