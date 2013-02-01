@@ -4,6 +4,16 @@
 #
 export PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin
 
+# Install OFutils
+sudo cp print-ftable.py /usr/bin/ & EPID=$!
+wait $EPID
+sudo chmod 777 /usr/bin/print-ftable.py & EPID=$!
+wait $EPID
+sudo cp start-switch.py /usr/bin/ & EPID=$!
+wait $EPID
+sudo chmod 777 /usr/bin/start-switch.py & EPID=$!
+wait $EPID
+
 if [ ! -f "~/OF/init.txt" ]; then
         mkdir ~/OF
         cd ~/OF
@@ -81,20 +91,6 @@ if [ ! -f "~/OF/init.txt" ]; then
         wait $EPID
 
         sudo chmod 777 -R ~/OF  & EPID=$!
-        wait $EPID
-
-        # Install OFutils
-        #sudo git clone https://github.com/dabideen/OFutils.git & EPID=$!
-        #wait $EPID
-        cd ~/OFutils & EPID=$!
-        wait $EPID
-        sudo cp print-ftable.py /usr/bin/ & EPID=$!
-        wait $EPID
-        sudo chmod 777 /usr/bin/print-ftable.py & EPID=$!
-        wait $EPID
-        sudo cp start-switch.py /usr/bin/ & EPID=$!
-        wait $EPID
-        sudo chmod 777 /usr/bin/start-switch.py & EPID=$!
         wait $EPID
 
          
