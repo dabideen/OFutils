@@ -29,7 +29,7 @@ def make_match_dict(match_str):
 
     Note that if a field omitted in the match rule it is assigned a value of '*'
     """
- 
+
     match_str = string.replace(match_str,'eth','"eth')
     match_str = string.replace(match_str,'=','"=')
     match_str = string.replace(match_str,'mpls_','"mpls_')
@@ -114,7 +114,9 @@ if __name__ == "__main__":
             # convert the match rule into a python dictionary
             if parts['match'] != 'all match':
                 match_dict = make_match_dict(parts['match'])
-  
+            else:
+                match_dict = {'eth_dst':'         *        ', 'eth_src':'         *         ','mpls_label':'*','eth_type':'   *','ipv4_dst':'     *         ','ipv4_src':'     *         ','port':' * '}  
+
             # convert the instruction list into a python dictionary
             if parts['instrs']:
                 instr_dict = make_instr_dict(parts['instrs'])
