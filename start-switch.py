@@ -73,6 +73,7 @@ def parse(ifconfig=None,ctrl_mask='10.10.40'):
                 OF_interfaces[key] = interfaces[key]
                 OF_interfaces[key]['ether'] = OF_interfaces[key]['ether'].replace(':','')
             #    OF_interfaces[key]['device'] = int(OF_interfaces[key]['device'].replace('eth',''))
+        
     return OF_interfaces,dpid,dpip
 
 
@@ -91,7 +92,20 @@ if __name__ == "__main__":
     OF_interfaces,dpid,dpip = parse(ifc,ctrl_ip_mask)
     OF_interface_list = OF_interfaces.keys()
     OF_interface_list.sort()
+
+    OF_iList = ""
+    num_port = 0 
+    oflog = open("/tmp/of_config.txt","w")
+    for x in range (len(OF_interface_list)):
+        if not OF_iList:
+            OF_iList = OF_interface_list[x]
+            oflog.write(str(x) + " " + str(OF_interfaces[OF_interface_list[x]]['inet']) + "\n" )
+        else:
+            oflog.write(str(x) + " " + str(OF_interfaces[OF_interface_list[x]]['inet']) + "\n" )
+            OF_iList = OF_iList + "," + OF_interface_list[x]
+    oflog.close()
     cmd = 'screen -d -m sudo /usr/bin/ofdatapath --verbose=dp_acts --verbose=pipeline ptcp:6633 -d ' + dpid + ' -i ' + ','.join(OF_interface_list)  # + ' >/users/dabideen/switch.log'
+     
 #    print cmd
     os.system(cmd)
     hname = socket.gethostname()
