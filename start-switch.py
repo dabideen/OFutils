@@ -94,14 +94,13 @@ if __name__ == "__main__":
     OF_interface_list.sort()
 
     OF_iList = ""
-    num_port = 0 
     oflog = open("/tmp/of_config.txt","w")
     for x in range (len(OF_interface_list)):
         if not OF_iList:
             OF_iList = OF_interface_list[x]
-            oflog.write(str(x) + " " + str(OF_interfaces[OF_interface_list[x]]['inet']) + "\n" )
+            oflog.write(dpid + " " +  str(x+1) + " " + str(OF_interfaces[OF_interface_list[x]]['inet']) + "\n" )
         else:
-            oflog.write(str(x) + " " + str(OF_interfaces[OF_interface_list[x]]['inet']) + "\n" )
+            oflog.write(dpid + " " + str(x+1) + " " + str(OF_interfaces[OF_interface_list[x]]['inet']) + "\n" )
             OF_iList = OF_iList + "," + OF_interface_list[x]
     oflog.close()
     cmd = 'screen -d -m sudo /usr/bin/ofdatapath --verbose=dp_acts --verbose=pipeline ptcp:6633 -d ' + dpid + ' -i ' + ','.join(OF_interface_list)  # + ' >/users/dabideen/switch.log'
