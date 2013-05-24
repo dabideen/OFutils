@@ -35,6 +35,7 @@ def make_match_dict(match_str):
     match_str = string.replace(match_str,'mpls_','"mpls_')
     match_str = string.replace(match_str,'ip','"ip')
     match_str = string.replace(match_str,'in_port','"port')
+    match_str = string.replace(match_str,'arp_tpa','"arp_tpa')
     match_str = string.replace(match_str,'=',':')
     temp_dict = eval('{' + match_str + '}')
     match_dict = {'eth_dst':'         *        ', 'eth_src':'         *         ','mpls_label':'*','eth_type':'   *','ipv4_dst':'     *         ','ipv4_src':'     *         ','port':' * '}
