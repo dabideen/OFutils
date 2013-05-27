@@ -78,17 +78,17 @@ if [ ! -f "~/OF/init.txt" ]; then
         
         
         # Install trema-edge
-        sudo git clone https://github.com/dabideen/trema-edge.git & EPID=$!
-        wait $EPID
-        sudo apt-get install -y gcc make ruby1.8 rubygems1.8 ruby1.8-dev libpcap-dev libsqlite3-dev & EPID=$!
-        wait $EPID
-        sudo gem install bundler & EPID=$!
-        wait $EPID
-        cd trema-edge
-        sudo bundle install & EPID=$!
-        wait $EPID
-        sudo ./build.rb & EPID=$!
-        wait $EPID
+        #sudo git clone https://github.com/dabideen/trema-edge.git & EPID=$!
+        #wait $EPID
+        #sudo apt-get install -y gcc make ruby1.8 rubygems1.8 ruby1.8-dev libpcap-dev libsqlite3-dev & EPID=$!
+        #wait $EPID
+        #sudo gem install bundler & EPID=$!
+        #wait $EPID
+        #cd trema-edge
+        #sudo bundle install & EPID=$!
+        #wait $EPID
+        #sudo ./build.rb & EPID=$!
+        #wait $EPID
 
         sudo chmod 777 -R ~/OF  & EPID=$!
         wait $EPID
