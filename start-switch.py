@@ -107,14 +107,14 @@ if __name__ == "__main__":
      
 #    print cmd
     os.system(cmd)
-    hname = socket.gethostname()
+    hname = '/tmp/' + socket.gethostname()
     log = open(hname + "of_config.txt","w")
     port = 1
     for key in OF_interface_list:
-       log.write(hname + "\t" + key + "\tMAC: " + OF_interfaces[key]['ether'] + "\tDPID: " + dpid + "\tport: " + str(port) + "\n")
+       log.write("\tMAC: " + OF_interfaces[key]['ether'] + "\tDPID: " + dpid + "\tport: " + str(port) + "\n")
        port = port + 1
     log.close()
-    cmd = 'mv ' + hname + 'of_config.txt' + ' ~/'
+    cmd = 'cp ' + hname + 'of_config.txt' + ' ~/'
     os.system(cmd)  
 
     cmd2 = 'screen -d -m /usr/bin/ofprotocol tcp:' + dpip + ':6633 tcp:' + ctrl_ip + ':6633'
