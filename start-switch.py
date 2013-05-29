@@ -111,7 +111,7 @@ if __name__ == "__main__":
     log = open(hname + "of_config.txt","w")
     port = 1
     for key in OF_interface_list:
-       log.write("\tMAC: " + OF_interfaces[key]['ether'] + "\tDPID: " + dpid + "\tport: " + str(port) + "\n")
+       log.write("MAC: " + OF_interfaces[key]['ether'] + "\tDPID: " + dpid + "\tport: " + str(port) + "\n")
        port = port + 1
     log.close()
     cmd = 'cp ' + hname + 'of_config.txt' + ' ~/'
