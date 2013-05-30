@@ -5,11 +5,11 @@
 export PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Install OFutils
-sudo cp print-ftable.py /usr/bin/ & EPID=$!
+sudo cp ~/OFutils/print-ftable.py /usr/bin/ & EPID=$!
 wait $EPID
 sudo chmod 777 /usr/bin/print-ftable.py & EPID=$!
 wait $EPID
-sudo cp start-switch.py /usr/bin/ & EPID=$!
+sudo cp ~/OFutils/start-switch.py /usr/bin/ & EPID=$!
 wait $EPID
 sudo chmod 777 /usr/bin/start-switch.py & EPID=$!
 wait $EPID
@@ -17,7 +17,7 @@ wait $EPID
 if [ ! -f "~/OF/init.txt" ]; then
         mkdir ~/OF
         cd ~/OF
-        sudo touch "~/OF/init.txt"
+        cat " " >  "~/OF/init.txt"
 
         sudo apt-get update& EPID=$!
         wait $EPID
