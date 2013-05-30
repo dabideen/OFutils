@@ -14,10 +14,9 @@ wait $EPID
 sudo chmod 777 /usr/bin/start-switch.py & EPID=$!
 wait $EPID
 
-if [ ! -f "~/OF/init.txt" ]; then
+if [ ! -f "~/OF" ]; then
         mkdir ~/OF
         cd ~/OF
-        cat " " >  "~/OF/init.txt"
 
         sudo apt-get update& EPID=$!
         wait $EPID
