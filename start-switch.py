@@ -21,6 +21,8 @@ import os
 import socket
 import platform
 
+os.umask(0)
+
 patterns = [
             '(?P<device>^[a-zA-Z0-9]+).*',
             '.*(inet )addr:(?P<inet>[^\s]*).*',
